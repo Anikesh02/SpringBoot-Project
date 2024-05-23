@@ -11,12 +11,12 @@ public class MoviesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MoviesApplication.class, args);
-		System.out.println("Just Checking the commit");
+		System.out.println("Error Checking");
 	}
 
 	@GetMapping("/root")
 	public String apiRoot(){
-		return "Hello World";
+		return "Hello Anikesh";
 	}
 
 }
