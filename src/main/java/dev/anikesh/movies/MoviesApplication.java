@@ -11,7 +11,7 @@ public class MoviesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MoviesApplication.class, args);
-		System.out.println("Just Checking");
+		System.out.println("Just Checking the commit");
 	}
 
 	@GetMapping("/root")
