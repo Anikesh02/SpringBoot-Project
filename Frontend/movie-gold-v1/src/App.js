@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import api from './api/axiosConfig';
+import Layout from './components/Layout';
+import Home from './components/home/Home';
+
 
 function App() {
+
+  const [movies, setMovies] = useState();
+
+  const getMovies = async () => {
+
+    try {
+      const response = await api.get('/api/v1/movies');
+      setMovies(response.data);
+
+    } catch (err) {
+      console.log(err);
+    }
+    
+  }
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route path='/' element={<Home/>}></Route>
+
+        </Route>
+      </Routes>
     </div>
   );
 }
